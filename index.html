@@ -4,9 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>iGoal</title>
 </head>
 <body>
+    <header>
+        <h1>iGoal</h1>
+        <form id="new-goal-form">
+            <label for="new-goal-input">Goal</label>
+            <input type="text" id="new-goal-input" placeholder="Add a goal" name="new-goal-input" />
 
+            <input type="submit" id="new-goal-submit" value="Add goal" />
+        </form>
+    </header>
+
+    <main>
+        <section class="goal-list">
+            <h2>Goals</h2>
+            <div class="goals">
+                <div class="content"> <input type="text" class="text" value="tmp data" readonly></div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
