@@ -2,7 +2,57 @@
     --dark: #374151;
     --darker: #1F2937;
     --darkest: #111827;
+    --gray: #808080;
     --light: #EEE;
     --pink: #EC4899;
     --purple: #885CF6;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: "Comic Sans MS", sans-serif, "Times New Roman";
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--dark);
+    color: #FFFFFF;
+}
+
+header {
+    padding: 2rem 1rem;
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+header h1 {
+    font-size: 2.4rem;
+    font-weight: 300;
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+#new-goal-form {
+    display: flex;
+}
+
+input, button {
+    appearance: none;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#new-goal-input {
+    flex: 1 1 0%;
+    background-color: var(--darker);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    color: var(--light);
+    font-size: 1.25rem;
 }
