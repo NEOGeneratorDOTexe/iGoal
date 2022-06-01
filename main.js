@@ -1,18 +1,66 @@
-alert("App style is done!")
-alert("iGoal's instructions currently under production... ")
-/* TODO: Requirement fields:
-*   Userstory:
-*   1. Add a goal
-*       a) User input Text of desired goal.
-*       b) User clicks on the "Add goal" submit-button.
-*       c) result: Goal gets added to the list on the front-end.
-*   2. Edit a goal
-*     a) User clicks on the "Edit" button on a previously added task in the list of goals.
-*     b) User change text via text input (readonly off)
-*     c) User press "Accept Change"
-*     d) result: The goal that the user desired to edit was change accordingly to the text input.
-*   3. Delete a goal -- same as edit a goal basically but deletes the goal rather than change it
-*      result: the goal that the user desired to delete was deleted and does not exists in tasks
-*
-*
-* */
+window.addEventListener('load', () => {
+	const form = document.querySelector("#new-goal-form");
+	const input = document.querySelector("#new-goal-input");
+	const goalsDiv = document.querySelector("#goals");
+
+	form.addEventListener('submit', (e) => {
+		e.preventDefault();
+
+        if(!input.value) {
+            alert("Provide a description of your goal in the textfield");
+            return;
+        }
+
+        const goalDiv = document.createElement("div");
+        goalDiv.classList.add("goal");
+
+        const contentDiv = document.createElement("div"); // create me
+        contentDiv.classList.add("content"); // style me 
+
+        goalDiv.appendChild(contentDiv); // input data
+
+        const goalInput = document.createElement("input")
+        goalInput.classList.add("text");
+        goalInput.type = "text";
+        goalInput.value = input.value;
+        goalInput.setAttribute("readonly", "true");
+
+        contentDiv.appendChild(goalInput);
+        
+        const actionsDiv = document.createElement("div");
+        actionsDiv.classList.add("actions");
+
+        const editButton = document.createElement("button");
+        editButton.classList.add("edit");
+        editButton.innerHTML = "Edit";
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete");
+        deleteButton.innerHTML = "Delete";
+
+        actionsDiv.appendChild(editButton);
+        actionsDiv.appendChild(deleteButton);
+
+        goalDiv.appendChild(actionsDiv);
+
+        goalsDiv.appendChild(goalDiv);
+
+        input.value = "";
+
+        editButton.addEventListener("click", () => {
+            if(editButton.innerText.toLowerCase() == "edit") {
+                goalInput.removeAttribute("readonly");
+                goalInput.focus(); // put cursor where it needs to be
+                editButton.style.color = "blue";
+                editButton.innerText = "Save";
+            } else {
+                goalInput.setAttribute("readonly", "readonly");
+                editButton.innerText = "Edit";
+            }
+        });
+
+        deleteButton.addEventListener("click", () => {
+            goalsDiv.removeChild(goalDiv); 
+        });
+	});
+});
